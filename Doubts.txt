@@ -1,0 +1,1913 @@
+Practical Experiment1: Initialize a Git Repository and Perform Add & Commit Operations
+Step 1: Install Git
+
+Download and install Git from:
+
+Git Official Website
+
+After installation, open Git Bash or Command Prompt.
+
+Step 2: Create a New Folder
+
+Create a folder for the experiment.
+
+mkdir GitPractical
+
+Move into the folder:
+
+cd GitPractical
+Step 3: Initialize Git Repository
+
+Run:
+
+git init
+Output:
+Initialized empty Git repository
+
+This creates a hidden .git folder.
+
+Step 4: Create a Text File
+
+Create a file named demo.txt.
+
+Using command:
+echo Hello Git > demo.txt
+
+OR create manually using Notepad.
+
+Step 5: Check Git Status
+
+Run:
+
+git status
+Output:
+
+It will show demo.txt as an untracked file.
+
+Step 6: Add File to Staging Area
+
+Run:
+
+git add demo.txt
+
+To add all files:
+
+git add .
+Step 7: Commit the File
+
+Run:
+
+git commit -m "First commit"
+If username/email is not configured:
+
+Run these commands first:
+
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+
+Then commit again.
+
+Step 8: Verify Commit
+
+Run:
+
+git log
+Output:
+
+Shows commit history with commit ID, author, and message.
+
+
+
+
+
+
+
+Experiment 2: Create a GitHub Repository and Push a Local Project to Remote Repository
+1. Aim of the Experiment
+
+To learn how to:
+
+Create a repository on GitHub
+Connect local Git repository with remote repository
+Push local project files to GitHub
+2. Requirements
+Git installed on system
+GitHub account
+Internet connection
+Local project folder
+
+Official websites:
+
+GitHub Official Website
+Git Download Page
+3. Theory
+Local Repository
+
+Repository stored on your computer.
+
+Remote Repository
+
+Repository stored online on GitHub.
+
+Push Operation
+
+Uploads local project files from computer to GitHub repository.
+
+4. Git Workflow
+Local Project → Git Repository → GitHub Remote Repository
+5. Step-by-Step Procedure
+PART A — Create Repository on GitHub
+Step 1: Open GitHub
+
+Go to:
+
+GitHub Homepage
+
+Login to your account.
+
+Step 2: Create New Repository
+Click "+" icon at top-right
+Select New repository
+Step 3: Enter Repository Details
+
+Example:
+
+Field	Value
+Repository Name	MyProject
+Visibility	Public or Private
+
+Do NOT select:
+
+README
+.gitignore
+License
+
+Then click:
+
+Create Repository
+PART B — Push Local Project to GitHub
+Step 4: Open Terminal / Git Bash
+
+Move to your project folder:
+
+cd path_of_project
+
+Example:
+
+cd Desktop/MyProject
+Step 5: Initialize Git Repository
+git init
+Explanation:
+
+Creates hidden .git folder.
+
+Step 6: Add Project Files
+git add .
+Explanation:
+
+Adds all files to staging area.
+
+Step 7: Commit Files
+git commit -m "Initial commit"
+Explanation:
+
+Creates first saved version of project.
+
+Step 8: Connect Local Repository to GitHub
+
+Copy repository URL from GitHub.
+
+Example:
+
+https://github.com/username/MyProject.git
+
+Run:
+
+git remote add origin https://github.com/username/MyProject.git
+Explanation:
+origin = remote repository name
+Connects local repo with GitHub repo
+Step 9: Push Project to GitHub
+
+Run:
+
+git branch -M main
+git push -u origin main
+6. What These Commands Mean
+Command	Purpose
+git init	Initializes Git repository
+git add .	Adds all files
+git commit	Saves snapshot
+git remote add origin	Connects to GitHub
+git push	Uploads files to GitHub
+7. Complete Command Sequence
+cd MyProject
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/username/MyProject.git
+git branch -M main
+git push -u origin main
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment 3: Create Two Branches in Git, Modify a File in Both Branches, and Merge Them into Main Branch
+1. Aim of the Experiment
+
+To learn how to:
+
+Create branches in Git
+Switch between branches
+Modify files in different branches
+Merge branches into the main branch
+2. Theory
+What is a Branch?
+
+A branch in Git is an independent line of development.
+
+Branches allow developers to:
+
+Work on features separately
+Avoid affecting main project
+Merge changes later
+3. Basic Git Branch Workflow
+Main Branch
+    |
+    |---- branch1
+    |
+    |---- branch2
+
+After work:
+
+branch1 + branch2 → merged into main
+4. Step-by-Step Procedure
+Step 1: Create Project Folder
+mkdir BranchExperiment
+
+Move into folder:
+
+cd BranchExperiment
+Step 2: Initialize Git Repository
+git init
+Step 3: Create a File
+notepad demo.txt
+
+Write:
+
+This is main branch file.
+
+Save and close file.
+
+Step 4: Add and Commit File
+git add demo.txt
+git commit -m "Initial commit"
+Step 5: Create First Branch
+git branch branch1
+Step 6: Create Second Branch
+git branch branch2
+Step 7: View All Branches
+git branch
+Output Example
+* master
+  branch1
+  branch2
+
+* shows current branch.
+
+Step 8: Switch to branch1
+git checkout branch1
+Step 9: Modify File in branch1
+
+Open file:
+
+notepad demo.txt
+
+Add:
+
+Modified in branch1.
+
+Save file.
+
+Step 10: Commit Changes in branch1
+git add demo.txt
+git commit -m "Modified file in branch1"
+Step 11: Switch to branch2
+git checkout branch2
+Step 12: Modify File in branch2
+notepad demo.txt
+
+Add:
+
+Modified in branch2.
+
+Save file.
+
+Step 13: Commit Changes in branch2
+git add demo.txt
+git commit -m "Modified file in branch2"
+Step 14: Switch Back to Main Branch
+
+For newer Git:
+
+git checkout main
+
+OR older Git:
+
+git checkout master
+Step 15: Merge branch1 into Main
+git merge branch1
+Step 16: Merge branch2 into Main
+git merge branch2
+5. Complete Command Sequence
+mkdir BranchExperiment
+cd BranchExperiment
+git init
+notepad demo.txt
+git add demo.txt
+git commit -m "Initial commit"
+
+git branch branch1
+git branch branch2
+
+git checkout branch1
+notepad demo.txt
+git add demo.txt
+git commit -m "Modified in branch1"
+
+git checkout branch2
+notepad demo.txt
+git add demo.txt
+git commit -m "Modified in branch2"
+
+git checkout master
+git merge branch1
+git merge branch2
+
+7. Verify Merge
+
+Use:
+
+git log
+
+to see merge history.
+
+8. Check File Content
+type demo.txt
+
+You should see content from merged branches.
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment 4: Create a Pull Request in GitHub and Resolve a Simple Merge Conflict Between Two Branches
+1. Aim of the Experiment
+
+To learn how to:
+
+Create branches in GitHub
+Push branches to GitHub
+Create a Pull Request (PR)
+Resolve merge conflicts
+Merge branches successfully
+2. Theory
+What is a Pull Request?
+
+A Pull Request (PR) in GitHub is a request to merge changes from one branch into another.
+
+It is used for:
+
+Code review
+Collaboration
+Discussing changes before merging
+3. What is Merge Conflict?
+
+A merge conflict occurs when:
+
+Two branches modify the same line of a file differently.
+
+Git cannot decide which change to keep automatically.
+
+4. Workflow of This Experiment
+main branch
+    |
+    |---- branch1
+    |
+    |---- branch2
+
+Both modify same file
+        ↓
+Create Pull Request
+        ↓
+Conflict occurs
+        ↓
+Resolve conflict
+        ↓
+Merge successfully
+5. Step-by-Step Procedure
+PART A — Create Local Repository
+Step 1: Create Folder
+mkdir PRExperiment
+
+Move into folder:
+
+cd PRExperiment
+Step 2: Initialize Git
+git init
+Step 3: Create File
+notepad demo.txt
+
+Write:
+
+Hello from Main Branch
+
+Save file.
+
+Step 4: Add and Commit
+git add demo.txt
+git commit -m "Initial commit"
+PART B — Create GitHub Repository
+Step 5: Create Repository on GitHub
+
+Go to:
+
+GitHub Homepage
+
+Create new repository:
+
+PRExperiment
+Step 6: Connect Local Repo to GitHub
+git remote add origin https://github.com/username/PRExperiment.git
+Step 7: Push Main Branch
+git branch -M main
+git push -u origin main
+PART C — Create Two Branches
+Step 8: Create branch1
+git checkout -b branch1
+Step 9: Modify File in branch1
+notepad demo.txt
+
+Replace content with:
+
+Hello from Branch1
+
+Save file.
+
+Step 10: Commit and Push branch1
+git add demo.txt
+git commit -m "Updated in branch1"
+git push origin branch1
+Step 11: Switch to Main Branch
+git checkout main
+Step 12: Create branch2
+git checkout -b branch2
+Step 13: Modify Same File in branch2
+notepad demo.txt
+
+Replace content with:
+
+Hello from Branch2
+
+Save file.
+
+Step 14: Commit and Push branch2
+git add demo.txt
+git commit -m "Updated in branch2"
+git push origin branch2
+PART D — Create Pull Request
+Step 15: Open GitHub Repository
+
+Open your repository on GitHub.
+
+You will see:
+
+Compare & pull request
+
+Click it.
+
+Step 16: Create Pull Request
+
+Set:
+
+Base branch → main
+Compare branch → branch1
+
+Click:
+
+Create Pull Request
+
+Then click:
+
+Merge Pull Request
+
+branch1 is merged into main.
+
+PART E — Create Merge Conflict
+Step 17: Create PR for branch2
+
+Now create another PR:
+
+Base → main
+Compare → branch2
+
+GitHub will show:
+
+This branch has conflicts
+
+because both branches changed same line.
+
+PART F — Resolve Conflict
+Step 18: Resolve Conflict on GitHub
+
+Click:
+
+Resolve conflicts
+
+You will see:
+
+<<<<<<< branch2
+Hello from Branch2
+=======
+Hello from Branch1
+>>>>>>> main
+Step 19: Edit the Final Content
+
+Example:
+
+Hello from Branch1 and Branch2
+
+Delete conflict symbols:
+
+<<<<<<<
+=======
+>>>>>>>
+Step 20: Mark as Resolved
+
+Click:
+
+Mark as resolved
+
+Then:
+
+Commit merge
+Step 21: Complete Pull Request
+
+Click:
+
+Merge Pull Request
+
+Conflict resolved successfully.
+
+6. Complete Commands Used
+mkdir PRExperiment
+cd PRExperiment
+git init
+
+notepad demo.txt
+git add demo.txt
+git commit -m "Initial commit"
+
+git remote add origin REPOSITORY_URL
+
+git branch -M main
+git push -u origin main
+
+git checkout -b branch1
+notepad demo.txt
+git add .
+git commit -m "Updated in branch1"
+git push origin branch1
+
+git checkout main
+
+git checkout -b branch2
+notepad demo.txt
+git add .
+git commit -m "Updated in branch2"
+git push origin branch2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment 5: Configure a Basic GitHub Actions Workflow to Automatically Display a Build Success Message on Every Push
+1. Aim of the Experiment
+
+To learn how to:
+
+Configure GitHub Actions
+Create a workflow file
+Run automation on every push
+Display a success message automatically
+2. Theory
+What is GitHub Actions?
+
+GitHub Actions is a CI/CD automation tool provided by GitHub.
+
+It helps automate:
+
+Build process
+Testing
+Deployment
+Notifications
+3. What is Workflow?
+
+A workflow is an automated process defined using a YAML (.yml) file.
+
+Workflow files are stored inside:
+
+.github/workflows/
+4. Workflow Architecture
+Push Code → GitHub Actions Triggered → Run Workflow → Show Success Message
+5. Step-by-Step Procedure
+Step 1: Create Project Folder
+mkdir GitHubActionExperiment
+
+Move into folder:
+
+cd GitHubActionExperiment
+Step 2: Initialize Git Repository
+git init
+Step 3: Create a Sample File
+notepad demo.txt
+
+Write:
+
+Hello GitHub Actions
+
+Save file.
+
+Step 4: Create GitHub Actions Folder
+
+Run:
+
+mkdir .github
+mkdir .github\workflows
+Step 5: Create Workflow File
+
+Create file:
+
+notepad .github\workflows\main.yml
+Step 6: Add Workflow Code
+
+Paste this code:
+
+name: Build Success Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Display Success Message
+        run: echo "Build Successful!"
+
+Save file.
+
+6. Explanation of Workflow File
+Section	Purpose
+name	Workflow name
+on: push	Runs on every push
+jobs	Defines tasks
+runs-on	Operating system
+steps	Commands executed
+echo	Displays message
+Step 7: Add Files to Git
+git add .
+Step 8: Commit Files
+git commit -m "Added GitHub Actions workflow"
+Step 9: Create GitHub Repository
+
+Go to:
+
+GitHub Homepage
+
+Create repository:
+
+GitHubActionExperiment
+Step 10: Connect Local Repo to GitHub
+git remote add origin https://github.com/username/GitHubActionExperiment.git
+
+Replace:
+
+username
+
+with your GitHub username.
+
+Step 11: Push Project to GitHub
+git branch -M main
+git push -u origin main
+Step 12: Verify GitHub Action
+
+Open your repository on GitHub.
+
+Click:
+
+Actions
+
+tab.
+
+You will see:
+
+Build Success Workflow
+
+Click workflow run.
+
+Step 13: View Success Message
+
+Open:
+
+Display Success Message
+
+You will see output:
+
+Build Successful!
+7. Complete Command Sequence
+mkdir GitHubActionExperiment
+cd GitHubActionExperiment
+
+git init
+
+notepad demo.txt
+
+mkdir .github
+mkdir .github\workflows
+
+notepad .github\workflows\main.yml
+
+git add .
+git commit -m "Added workflow"
+
+git remote add origin REPOSITORY_URL
+
+git branch -M main
+git push -u origin main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment 6: Create a Simple CI/CD Workflow Using GitHub Actions to Build and Deploy a Static HTML Page
+1. Aim of the Experiment
+
+To learn how to:
+
+Create a static HTML webpage
+Configure CI/CD using GitHub Actions
+Automatically deploy website using GitHub Pages
+2. Theory
+What is CI/CD?
+CI (Continuous Integration)
+
+Automatically builds and checks code whenever changes are pushed.
+
+CD (Continuous Deployment)
+
+Automatically deploys application after successful build.
+
+3. What is GitHub Pages?
+
+GitHub Pages is a free hosting service provided by GitHub to host static websites.
+
+4. Workflow Architecture
+Push Code → GitHub Actions Triggered → Build Website → Deploy to GitHub Pages
+5. Step-by-Step Procedure
+PART A — Create Project
+Step 1: Create Project Folder
+mkdir CICDExperiment
+
+Move into folder:
+
+cd CICDExperiment
+Step 2: Initialize Git Repository
+git init
+PART B — Create HTML Page
+Step 3: Create HTML File
+notepad index.html
+
+Paste this code:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CI/CD Demo</title>
+</head>
+<body>
+    <h1>Welcome to GitHub Actions CI/CD</h1>
+    <p>Static website deployed successfully.</p>
+</body>
+</html>
+
+Save file.
+
+PART C — Create GitHub Actions Workflow
+Step 4: Create Workflow Folder
+mkdir .github
+mkdir .github\workflows
+Step 5: Create Workflow File
+notepad .github\workflows\deploy.yml
+Step 6: Add Workflow Code
+
+Paste this YAML code:
+
+name: Deploy Static Website
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+Save file.
+
+6. Explanation of Workflow
+Section	Purpose
+on: push	Runs workflow on every push
+checkout	Downloads repository files
+configure-pages	Configures GitHub Pages
+upload-pages-artifact	Uploads website files
+deploy-pages	Deploys website
+PART D — Push Project to GitHub
+Step 7: Add Files
+git add .
+Step 8: Commit Files
+git commit -m "Added CI/CD workflow"
+Step 9: Create GitHub Repository
+
+Go to:
+
+GitHub Homepage
+
+Create repository:
+
+CICDExperiment
+Step 10: Connect Repository
+git remote add origin https://github.com/username/CICDExperiment.git
+
+Replace:
+
+username
+
+with your GitHub username.
+
+Step 11: Push Code
+git branch -M main
+git push -u origin main
+PART E — Enable GitHub Pages
+Step 12: Open Repository Settings
+
+Go to:
+
+Settings → Pages
+Step 13: Configure Deployment Source
+
+Under:
+
+Build and Deployment
+
+Select:
+
+Source → GitHub Actions
+
+Save settings.
+
+PART F — Verify Deployment
+Step 14: Open Actions Tab
+
+Click:
+
+Actions
+
+You will see workflow:
+
+Deploy Static Website
+
+Wait until workflow shows:
+
+Success
+Step 15: Open Deployed Website
+
+Go to:
+
+https://username.github.io/CICDExperiment/
+
+Replace:
+
+username
+
+with your GitHub username.
+
+Your static webpage will open.
+
+7. Complete Command Sequence
+mkdir CICDExperiment
+cd CICDExperiment
+
+git init
+
+notepad index.html
+
+mkdir .github
+mkdir .github\workflows
+
+notepad .github\workflows\deploy.yml
+
+git add .
+git commit -m "Added CI/CD workflow"
+
+git remote add origin REPOSITORY_URL
+
+git branch -M main
+git push -u origin main
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment 7: Implement Automated Testing in GitHub Actions Using a Sample Python Test File
+1. Aim of the Experiment
+
+To learn how to:
+
+Create a simple Python program
+Write automated test cases
+Configure GitHub Actions workflow
+Run tests automatically on every push
+2. Theory
+What is Automated Testing?
+
+Automated testing means running test cases automatically using tools/scripts instead of manually checking output.
+
+What is GitHub Actions?
+
+GitHub Actions automates:
+
+Testing
+Building
+Deployment
+3. Workflow Architecture
+Push Code → GitHub Actions Triggered → Run Python Test → Show Result
+4. Step-by-Step Procedure
+PART A — Create Project
+Step 1: Create Project Folder
+mkdir PythonTestExperiment
+
+Move into folder:
+
+cd PythonTestExperiment
+Step 2: Initialize Git Repository
+git init
+PART B — Create Python Program
+Step 3: Create Python File
+notepad app.py
+
+Paste this code:
+
+def add(a, b):
+    return a + b
+
+Save file.
+
+PART C — Create Test File
+Step 4: Create Test File
+notepad test_app.py
+
+Paste this code:
+
+from app import add
+
+def test_add():
+    assert add(2, 3) == 5
+
+Save file.
+
+PART D — Create GitHub Actions Workflow
+Step 5: Create Workflow Folder
+mkdir .github
+mkdir .github\workflows
+Step 6: Create Workflow File
+notepad .github\workflows\python-test.yml
+Step 7: Add Workflow Code
+
+Paste this YAML code:
+
+name: Python Automated Testing
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pytest
+        run: pip install pytest
+
+      - name: Run Tests
+        run: pytest
+
+Save file.
+
+5. Explanation of Workflow
+Section	Purpose
+on: push	Runs workflow on every push
+setup-python	Installs Python
+pip install pytest	Installs testing tool
+pytest	Runs automated tests
+PART E — Push Project to GitHub
+Step 8: Add Files
+git add .
+Step 9: Commit Files
+git commit -m "Added automated testing workflow"
+Step 10: Create GitHub Repository
+
+Go to:
+
+GitHub Homepage
+
+Create repository:
+
+PythonTestExperiment
+Step 11: Connect Repository
+git remote add origin https://github.com/username/PythonTestExperiment.git
+
+Replace:
+
+username
+
+with your GitHub username.
+
+Step 12: Push Code
+git branch -M main
+git push -u origin main
+PART F — Verify Workflow
+Step 13: Open GitHub Repository
+
+Click:
+
+Actions
+
+tab.
+
+Step 14: View Workflow Execution
+
+You will see:
+
+Python Automated Testing
+
+Open workflow.
+
+Step 15: Verify Test Result
+
+If test passes, you will see:
+
+✔ test_add PASSED
+
+Workflow status becomes:
+
+Success
+6. Complete Command Sequence
+mkdir PythonTestExperiment
+cd PythonTestExperiment
+
+git init
+
+notepad app.py
+notepad test_app.py
+
+mkdir .github
+mkdir .github\workflows
+
+notepad .github\workflows\python-test.yml
+
+git add .
+git commit -m "Added automated testing"
+
+git remote add origin REPOSITORY_URL
+
+git branch -M main
+git push -u origin main
+7. Project Structure
+PythonTestExperiment/
+│
+├── app.py
+├── test_app.py
+│
+└── .github/
+    └── workflows/
+        └── python-test.yml
+8. Advantages of Automated Testing
+Detects bugs automatically
+Saves time
+Improves code quality
+Prevents errors during development
+Enables CI/CD pipelines
+9. Viva Questions and Answers
+Q1. What is automated testing?
+
+Testing performed automatically using scripts/tools.
+
+Q2. What is pytest?
+
+A Python testing framework.
+
+Q3. What triggers this workflow?
+
+Push event on main branch.
+
+Q4. What is CI?
+
+Continuous Integration.
+
+Q5. What is the use of GitHub Actions?
+
+Automating testing, building, and deployment.
+
+Q6. Which command runs tests?
+pytest
+10. Result
+
+Automated testing was successfully implemented using GitHub Actions with a sample Python test file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment 8: Create a Dockerfile for a Simple Web Application and Build a Docker Image Successfully
+1. Aim of the Experiment
+
+To learn how to:
+
+Create a Dockerfile
+Containerize a simple web application
+Build a Docker image
+Run application inside Docker container
+2. Theory
+What is Docker?
+
+Docker is a containerization platform used to package applications with all dependencies.
+
+What is a Docker Image?
+
+A Docker image is a lightweight executable package containing:
+
+Application code
+Libraries
+Dependencies
+Runtime environment
+What is Dockerfile?
+
+A Dockerfile is a text file containing instructions to build Docker images.
+
+3. Workflow
+Application Files → Dockerfile → Docker Image → Docker Container
+4. Requirements
+
+Install Docker Desktop:
+
+Docker Desktop Download
+
+After installation verify:
+
+docker --version
+5. Step-by-Step Procedure
+PART A — Create Simple Web Application
+Step 1: Create Project Folder
+mkdir DockerExperiment
+
+Move into folder:
+
+cd DockerExperiment
+Step 2: Create HTML File
+notepad index.html
+
+Paste this code:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Web App</title>
+</head>
+<body>
+    <h1>Hello Docker!</h1>
+    <p>Simple web application running inside Docker container.</p>
+</body>
+</html>
+
+Save file.
+
+PART B — Create Dockerfile
+Step 3: Create Dockerfile
+notepad Dockerfile
+
+Paste this code:
+
+FROM nginx:latest
+
+COPY index.html /usr/share/nginx/html/index.html
+
+Save file.
+
+IMPORTANT:
+
+File name must be exactly:
+Dockerfile
+
+(no .txt extension)
+
+6. Explanation of Dockerfile
+Instruction	Purpose
+FROM nginx:latest	Uses Nginx base image
+COPY	Copies HTML file into container
+PART C — Build Docker Image
+Step 4: Build Docker Image
+
+Run:
+
+docker build -t docker-web-app .
+Explanation:
+Part	Meaning
+docker build	Builds image
+-t	Tags image
+docker-web-app	Image name
+.	Current directory
+Step 5: Verify Docker Image
+docker images
+
+You will see:
+
+docker-web-app
+PART D — Run Docker Container
+Step 6: Run Container
+docker run -d -p 8080:80 docker-web-app
+7. Explanation of Run Command
+Part	Meaning
+docker run	Starts container
+-d	Detached mode
+-p 8080:80	Maps ports
+docker-web-app	Image name
+Step 7: Open Web Application
+
+Open browser and visit:
+
+http://localhost:8080
+
+You will see:
+
+Hello Docker!
+8. Verify Running Containers
+docker ps
+
+Shows active containers.
+
+9. Stop Container
+docker stop CONTAINER_ID
+
+Example:
+
+docker stop 123abc
+10. Complete Command Sequence
+mkdir DockerExperiment
+cd DockerExperiment
+
+notepad index.html
+notepad Dockerfile
+
+docker build -t docker-web-app .
+
+docker images
+
+docker run -d -p 8080:80 docker-web-app
+
+docker ps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment 9: Use Docker Compose to Run Two Containers Together Such as a Web Server and Database Service
+1. Aim of the Experiment
+
+To learn how to:
+
+Use Docker Compose
+Run multiple containers together
+Configure web server and database services
+Manage multi-container applications
+2. Theory
+What is Docker Compose?
+
+Docker Compose is a tool used to define and run multi-container Docker applications using a YAML file.
+
+Why Docker Compose?
+
+Instead of running containers one-by-one, Docker Compose can start all services together using a single command.
+
+3. Architecture
+Web Server Container  ←→  Database Container
+        Nginx                 MySQL
+4. Requirements
+
+Install:
+
+Docker Desktop
+Docker Compose (comes with Docker Desktop)
+
+Verify installation:
+
+docker --version
+docker compose version
+5. Step-by-Step Procedure
+PART A — Create Project Folder
+Step 1: Create Folder
+mkdir ComposeExperiment
+
+Move into folder:
+
+cd ComposeExperiment
+PART B — Create Web Page
+Step 2: Create HTML File
+notepad index.html
+
+Paste this code:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Compose Demo</title>
+</head>
+<body>
+    <h1>Docker Compose Working Successfully!</h1>
+    <p>Web server and database containers are running together.</p>
+</body>
+</html>
+
+Save file.
+
+PART C — Create Docker Compose File
+Step 3: Create Compose File
+notepad docker-compose.yml
+
+Paste this YAML code:
+
+version: '3'
+
+services:
+
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+
+  database:
+    image: mysql:8.0
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: testdb
+
+    ports:
+      - "3306:3306"
+
+Save file.
+
+6. Explanation of docker-compose.yml
+Section	Purpose
+services	Defines containers
+web	Nginx web server
+database	MySQL database
+ports	Port mapping
+volumes	Shares files
+environment	Database settings
+PART D — Run Docker Compose
+Step 4: Start Containers
+
+Run:
+
+docker compose up -d
+Expected Output
+
+Docker will:
+
+Download Nginx image
+Download MySQL image
+Create containers
+Start services
+Step 5: Verify Running Containers
+docker ps
+
+You should see:
+
+nginx container
+mysql container
+PART E — Verify Web Application
+Step 6: Open Browser
+
+Visit:
+
+http://localhost:8080
+
+You will see:
+
+Docker Compose Working Successfully!
+PART F — Stop Containers
+Step 7: Stop Services
+docker compose down
+
+This stops and removes containers.
+
+7. Complete Command Sequence
+mkdir ComposeExperiment
+cd ComposeExperiment
+
+notepad index.html
+notepad docker-compose.yml
+
+docker compose up -d
+
+docker ps
+
+docker compose down
+8. Project Structure
+ComposeExperiment/
+│
+├── index.html
+│
+└── docker-compose.yml
+9. Expected Output
+Browser Output
+Docker Compose Working Successfully!
+Web server and database containers are running together.
+10. Advantages of Docker Compose
+Runs multiple containers together
+Easy configuration
+Simple networking
+One-command deployment
+Better container management
+11. Viva Questions and Answers
+Q1. What is Docker Compose?
+
+A tool for running multiple Docker containers together.
+
+Q2. Which file is used by Docker Compose?
+docker-compose.yml
+Q3. What command starts services?
+docker compose up -d
+Q4. What command stops services?
+docker compose down
+Q5. What is the use of ports?
+
+Maps container ports to system ports.
+
+Q6. What is Nginx?
+
+A web server.
+
+Q7. What is MySQL?
+
+A relational database management system.
+
+12. Result
+
+Docker Compose was successfully used to run a web server container and database container together.
+
+PS C:\Users\Karan\ComposeExperiment> docker compose up -d
+time="2026-05-25T18:11:33+05:30" level=warning msg="C:\\Users\\Karan\\ComposeExperiment\\docker-compose.yml: the attribute version is obsolete, it will be ignored, please remove it to avoid potential confusion"
+[+] up 2/2
+ ✔ Container composeexperiment-database-1 Running                       0.0s
+ ✔ Container composeexperiment-web-1      Started                       0.2s
+
+What's next:
+    Filter, search, and stream logs from all your Compose services
+    in one place with Docker Desktop's Logs view. docker-desktop://dashboard/logs?appId=composeexperiment
+PS C:\Users\Karan\ComposeExperiment> docker ps
+CONTAINER ID   IMAGE            COMMAND                  CREATED              STATUS              PORTS                                         NAMES
+666b6bbd0a0f   nginx:latest     "/docker-entrypoint.…"   About a minute ago   Up 32 seconds       80/tcp                                        composeexperiment-web-1
+a224aac081f0   mysql:8.0        "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp   composeexperiment-database-1
+0db62ffb7919   docker-web-app   "/docker-entrypoint.…"   10 minutes ago       Up 10 minutes       0.0.0.0:8080->80/tcp, [::]:8080->80/tcp       stupefied_brahmagupta
+PS C:\Users\Karan\ComposeExperiment>
+
+Everything is working correctly ✅
+
+Your output shows:
+
+Nginx web container started
+MySQL database container started
+Docker Compose executed successfully
+Only One Small Warning
+
+This warning:
+
+the attribute `version` is obsolete
+
+is NOT an error.
+
+New Docker Compose versions no longer require:
+
+version: '3'
+
+You can remove that line if you want.
+
+Your Updated docker-compose.yml
+
+Use this cleaner version:
+
+services:
+
+  web:
+    image: nginx:latest
+
+    ports:
+      - "8080:80"
+
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+
+  database:
+    image: mysql:8.0
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: testdb
+
+    ports:
+      - "3306:3306"
+One Important Thing
+
+Your web container currently shows:
+
+80/tcp
+
+instead of:
+
+0.0.0.0:8080->80/tcp
+
+This means port mapping did not apply properly because another container is already using port 8080.
+
+Your old container:
+
+docker-web-app
+
+is already using:
+
+8080
+Fix It
+Step 1: Stop Old Container
+
+Run:
+
+docker stop stupefied_brahmagupta
+Step 2: Restart Compose
+
+Run:
+
+docker compose down
+docker compose up -d
+Step 3: Check Again
+
+Run:
+
+docker ps
+
+Now you should see:
+
+0.0.0.0:8080->80/tcp
+
+for:
+
+composeexperiment-web-1
+Step 4: Open Website
+
+Open browser:
+
+http://localhost:8080
+
+You should see:
+
+Docker Compose Working Successfully!
+Final Result
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment 10: Write and Execute an Ansible Playbook to Install Apache/Nginx and Start the Service on a Linux Machine
+1. Aim of the Experiment
+
+To learn how to:
+
+Install Ansible
+Create an Ansible inventory
+Write an Ansible playbook
+Install Apache/Nginx automatically
+Start and enable the web server service
+2. Theory
+What is Ansible?
+
+Red Hat Ansible is an automation tool used for:
+
+Configuration management
+Application deployment
+Server automation
+What is a Playbook?
+
+An Ansible playbook is a YAML file containing automation tasks.
+
+3. Architecture
+Control Node → Managed Linux Machine
+      |
+      └── Install Apache/Nginx Automatically
+4. Requirements
+
+Install:
+
+Linux machine / Ubuntu VM
+Ansible
+5. Install Ansible
+
+For Ubuntu/Linux:
+
+sudo apt update
+sudo apt install ansible -y
+
+Verify installation:
+
+ansible --version
+6. Step-by-Step Procedure
+PART A — Create Project Folder
+Step 1: Create Folder
+mkdir AnsibleExperiment
+
+Move into folder:
+
+cd AnsibleExperiment
+PART B — Create Inventory File
+Step 2: Create Inventory File
+nano inventory
+
+Add:
+
+[webservers]
+localhost ansible_connection=local
+
+Save file.
+
+Nano Save:
+CTRL + O → Enter
+CTRL + X
+7. Explanation of Inventory
+Part	Meaning
+[webservers]	Server group
+localhost	Current machine
+ansible_connection=local	Local execution
+PART C — Create Playbook
+Step 3: Create Playbook File
+nano apache-playbook.yml
+
+Paste this code:
+
+---
+- name: Install and Start Apache
+  hosts: webservers
+  become: yes
+
+  tasks:
+
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+
+    - name: Start Apache Service
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+Save file.
+
+8. Explanation of Playbook
+Section	Purpose
+hosts	Target systems
+become: yes	Uses sudo
+apt	Installs package
+service	Starts service
+PART D — Execute Playbook
+Step 4: Run Playbook
+ansible-playbook -i inventory apache-playbook.yml
+Expected Output
+PLAY RECAP
+localhost : ok=2 changed=2 unreachable=0 failed=0
+PART E — Verify Apache Service
+Step 5: Check Apache Status
+sudo systemctl status apache2
+
+You should see:
+
+active (running)
+Step 6: Open Browser
+
+Visit:
+
+http://localhost
+
+You will see Apache default webpage.
+
+9. Optional: Nginx Playbook Instead of Apache
+
+If your teacher asks for Nginx, use this playbook:
+
+---
+- name: Install and Start Nginx
+  hosts: webservers
+  become: yes
+
+  tasks:
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Start Nginx Service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+Save as:
+
+nginx-playbook.yml
+
+Run:
+
+ansible-playbook -i inventory nginx-playbook.yml
+10. Complete Command Sequence
+sudo apt update
+sudo apt install ansible -y
+
+mkdir AnsibleExperiment
+cd AnsibleExperiment
+
+nano inventory
+
+nano apache-playbook.yml
+
+ansible-playbook -i inventory apache-playbook.yml
+
+sudo systemctl status apache2
+11. Project Structure
+AnsibleExperiment/
+│
+├── inventory
+│
+└── apache-playbook.yml
+
+
+
+
